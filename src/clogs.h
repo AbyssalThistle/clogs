@@ -25,6 +25,13 @@
 #define CLOG_ERR(format, ...)\
 	clogs_put(CLOGS_ERR, __FUNCTION__, format, ##__VA_ARGS__)
 
+#define COUT(format, ...)\
+	clogs_out(CLOGS_INFO, __FUNCTION__, format, ##__VA_ARGS__)
+#define COUT_WARN(format, ...)\
+	clogs_out(CLOGS_WARN, __FUNCTION__, format, ##__VA_ARGS__)
+#define COUT_ERR(format, ...)\
+	clogs_out(CLOGS_ERR, __FUNCTION__, format, ##__VA_ARGS__)
+
 #include <stdio.h>
 
 struct clogs;

@@ -95,9 +95,9 @@ END_TEST
 
 START_TEST(test_out)
 {
-	clogs_out(CLOGS_INFO, __FUNCTION__, "straight to stdout %d", 123);
-	clogs_out(CLOGS_WARN, __FUNCTION__, "straight to stdout %d", 123);
-	clogs_out(CLOGS_ERR, __FUNCTION__, "straight to stdout %d", 123);
+	COUT("straight to stdout %d", 123);
+	COUT_ERR("straight to stdout %d", 123);
+	COUT_WARN("straight to stderr %d", 123);
 }
 END_TEST
 
