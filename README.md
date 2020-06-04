@@ -44,3 +44,15 @@ clogs_close()
 
 `clogs_close()` will close the clogs log file and destroy the internal mutexes.
 Must be called to avoid memory leaks
+
+### unsafe usage
+```c
+COUT("info message");
+COUT_WARN("warn message");
+COUT_ERR("error message");
+```
+The `COUT` macros take the same parameters as our `CLOG` macros, however they
+are *not* thread-safe. These should *only* be used on the main thread.
+
+As the name implies, they *do not log to a file*. However as a result, they can
+be called when clog isn't initilised.
