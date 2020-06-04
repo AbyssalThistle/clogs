@@ -10,8 +10,16 @@
 #define BUFSIZE 2048
 #define THREAD_MAX 9
 #define THREAD_MSG_COUNT 3
+
 pthread_t threads[THREAD_MAX];
 int tid[THREAD_MAX];
+
+const char *toolong =
+	"##############################"
+	"##############################"
+	"##############################"
+	"##############################"
+	"##############################";
 
 void *foo(void* data)
 {
@@ -101,6 +109,14 @@ START_TEST(test_out)
 }
 END_TEST
 
+START_TEST(test_length)
+{
+	COUT(toolong);
+	CLOG(toolong);
+	clogs_close();
+}
+END_TEST
+
 Suite *clogs_suite(void)
 {
 	Suite *s;
@@ -112,6 +128,7 @@ Suite *clogs_suite(void)
 	tcase_add_unchecked_fixture(tc, setup, teardown);
 	tcase_add_test(tc, test_clogs);
 	tcase_add_test(tc, test_out);
+	tcase_add_test(tc, test_length);
 
 	suite_add_tcase(s, tc);
 	return s;
