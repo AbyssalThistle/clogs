@@ -93,6 +93,14 @@ START_TEST(test_clogs)
 }
 END_TEST
 
+START_TEST(test_out)
+{
+	COUT("straight to stdout %d", 123);
+	COUT_ERR("straight to stdout %d", 123);
+	COUT_WARN("straight to stderr %d", 123);
+}
+END_TEST
+
 Suite *clogs_suite(void)
 {
 	Suite *s;
@@ -103,6 +111,7 @@ Suite *clogs_suite(void)
 
 	tcase_add_unchecked_fixture(tc, setup, teardown);
 	tcase_add_test(tc, test_clogs);
+	tcase_add_test(tc, test_out);
 
 	suite_add_tcase(s, tc);
 	return s;
