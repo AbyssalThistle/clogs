@@ -41,3 +41,4 @@ void clogs_update();
 void clogs_flush();
 void clogs_close();
 void clogs_put(enum clogs_level l, const char* func, const char* format, ...);
+void clogs_out(enum clogs_level l, const char* func, const char* format, ...);

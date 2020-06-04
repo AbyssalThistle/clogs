@@ -93,6 +93,14 @@ START_TEST(test_clogs)
 }
 END_TEST
 
+START_TEST(test_out)
+{
+	clogs_out(CLOGS_INFO, __FUNCTION__, "straight to stdout %d", 123);
+	clogs_out(CLOGS_WARN, __FUNCTION__, "straight to stdout %d", 123);
+	clogs_out(CLOGS_ERR, __FUNCTION__, "straight to stdout %d", 123);
+}
+END_TEST
+
 Suite *clogs_suite(void)
 {
 	Suite *s;
@@ -103,6 +111,7 @@ Suite *clogs_suite(void)
 
 	tcase_add_unchecked_fixture(tc, setup, teardown);
 	tcase_add_test(tc, test_clogs);
+	tcase_add_test(tc, test_out);
 
 	suite_add_tcase(s, tc);
 	return s;

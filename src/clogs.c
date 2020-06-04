@@ -96,6 +96,44 @@ void clogs_put(enum clogs_level l, const char* func, const char* format, ...)
 	pthread_mutex_unlock(&c.mtx);
 }
 
+void clogs_out(enum clogs_level l, const char* func, const char* format, ...)
+{
+	FILE* stream = NULL;
+	char* color = "";
+	char* prefix = "";
+	switch(l){
+		case CLOGS_INFO:
+			stream = stdout;
+			prefix = "[info]";
+			color = "";
+			break;
+		case CLOGS_WARN:
+			stream = stdout;
+			prefix = "[warn]";
+			color = ANSI_COLOR_YELLOW;
+			break;
+		case CLOGS_ERR:
+			stream = stderr;
+			prefix = "[error]";
+			color = ANSI_COLOR_RED;
+			break;
+	}
+	char tmp[CLOGS_MSG_MAX];
+	int available = CLOGS_MSG_MAX;
+	snprintf(tmp, available, "%s (%s) ", prefix, func);
+	available -= strlen(tmp);
+
+	va_list args;
+	va_start(args, format);
+	vsnprintf(tmp+(CLOGS_MSG_MAX-available), available, format, args);
+	va_end(args);
+
+	fprintf(stream, color);
+	fprintf(stream, tmp);
+	fprintf(stream, ANSI_COLOR_RESET);
+	fprintf(stream, "\n");
+}
+
 void clogs_init(const char* logfile)
 {
 	c.first = 0;
