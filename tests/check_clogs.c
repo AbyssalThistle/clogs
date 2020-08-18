@@ -106,11 +106,13 @@ START_TEST(test_out)
 	COUT("straight to stdout %d", 123);
 	COUT_ERR("straight to stdout %d", 123);
 	COUT_WARN("straight to stderr %d", 123);
+	TODO("a todo, to stdout");
 }
 END_TEST
 
 START_TEST(test_length)
 {
+	TTODO("a todo, buffered");
 	COUT(toolong);
 	CLOG(toolong);
 	clogs_close();

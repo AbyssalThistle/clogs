@@ -32,6 +32,11 @@
 #define COUT_ERR(format, ...)\
 	clogs_out(CLOGS_ERR, __FUNCTION__, format, ##__VA_ARGS__)
 
+#define TODO(format, ...)\
+	clogs_out(CLOGS_WARN, __FUNCTION__, "TODO: " format, ##__VA_ARGS__)
+#define TTODO(format, ...)\
+	clogs_put(CLOGS_WARN, __FUNCTION__, "TODO: " format, ##__VA_ARGS__)
+
 #include <stdio.h>
 
 struct clogs;
