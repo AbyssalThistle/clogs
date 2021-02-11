@@ -153,7 +153,11 @@ void clogs_init(const char* logfile)
 	c.levels[CLOGS_ERR] = "[error]";
 
 	pthread_mutexattr_init(&c.mtxattr);
-	pthread_mutexattr_settype(&c.mtxattr, PTHREAD_MUTEX_RECURSIVE);
+	#ifdef PTHREAD_MUTEX_RECURSIVE
+		pthread_mutexattr_settype(&c.mtxattr, PTHREAD_MUTEX_RECURSIVE);
+	#else
+		pthread_mutexattr_settype(&c.mtxattr, PTHREAD_MUTEX_RECURSIVE_NP);
+	#endif
 	pthread_mutex_init(&c.mtx, &c.mtxattr);
 
 	if(logfile != NULL) {
