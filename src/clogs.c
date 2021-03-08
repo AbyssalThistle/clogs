@@ -4,6 +4,9 @@
 #include <stdarg.h>
 #include <pthread.h>
 
+#pragma GCC diagnostic ignored "-Wmemset-elt-size"
+#pragma GCC diagnostic ignored "-Wincompatible-pointer-types"
+
 #ifndef CLOGS_QUEUE_MAX
 	#define CLOGS_QUEUE_MAX 64
 #endif
