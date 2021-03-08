@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
+
+#define _GNU_SOURCE
 #include <pthread.h>
 
 #pragma GCC diagnostic ignored "-Wmemset-elt-size"
