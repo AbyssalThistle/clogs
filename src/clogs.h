@@ -22,6 +22,12 @@
 	clogs_put(CLOGS_INFO, __FUNCTION__, format, ##__VA_ARGS__)
 #define CLOG_WARN(format, ...)\
 	clogs_put(CLOGS_WARN, __FUNCTION__, format, ##__VA_ARGS__)
+#ifdef DEBUG
+	#define CLOG_DEBUG(format, ...)\
+		clogs_put(CLOGS_DEBUG, __FUNCTION__, format, ##__VA_ARGS__)
+#else
+	#define CLOG_DEBUG(format, ...)
+#endif
 #define CLOG_ERR(format, ...)\
 	clogs_put(CLOGS_ERR, __FUNCTION__, format, ##__VA_ARGS__)
 
@@ -29,6 +35,12 @@
 	clogs_out(CLOGS_INFO, __FUNCTION__, format, ##__VA_ARGS__)
 #define COUT_WARN(format, ...)\
 	clogs_out(CLOGS_WARN, __FUNCTION__, format, ##__VA_ARGS__)
+#ifdef DEBUG
+	#define COUT_DEBUG(format, ...)\
+		clogs_out(CLOGS_DEBUG, __FUNCTION__, format, ##__VA_ARGS__)
+#else
+	#define COUT_DEBUG(format, ...)
+#endif
 #define COUT_ERR(format, ...)\
 	clogs_out(CLOGS_ERR, __FUNCTION__, format, ##__VA_ARGS__)
 
@@ -45,6 +57,9 @@ enum clogs_level
 {
 	CLOGS_INFO = 0,
 	CLOGS_WARN,
+#ifdef DEBUG
+	CLOGS_DEBUG,
+#endif
 	CLOGS_ERR
 };
 

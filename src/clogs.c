@@ -115,6 +115,13 @@ void clogs_out(enum clogs_level l, const char* func, const char* format, ...)
 			prefix = "[warn]";
 			color = ANSI_COLOR_YELLOW;
 			break;
+#ifdef DEBUG
+		case CLOGS_DEBUG:
+			stream = stdout;
+			prefix = "[debug]";
+			color = ANSI_COLOR_CYAN;
+			break;
+#endif
 		case CLOGS_ERR:
 			stream = stderr;
 			prefix = "[error]";
@@ -145,14 +152,23 @@ void clogs_init(const char* logfile)
 
 	c.streams[CLOGS_INFO] = stdout;
 	c.streams[CLOGS_WARN] = stdout;
+#ifdef DEBUG
+	c.streams[CLOGS_DEBUG] = stdout;
+#endif
 	c.streams[CLOGS_ERR] = stderr;
 
 	c.colors[CLOGS_INFO] = "";
 	c.colors[CLOGS_WARN] = ANSI_COLOR_YELLOW;
+#ifdef DEBUG
+	c.colors[CLOGS_DEBUG] = ANSI_COLOR_CYAN;
+#endif
 	c.colors[CLOGS_ERR] = ANSI_COLOR_RED;
 
 	c.levels[CLOGS_INFO] = "[info]";
 	c.levels[CLOGS_WARN] = "[warn]";
+#ifdef DEBUG
+	c.levels[CLOGS_DEBUG] = "[debug]";
+#endif
 	c.levels[CLOGS_ERR] = "[error]";
 
 	pthread_mutexattr_init(&c.mtxattr);
