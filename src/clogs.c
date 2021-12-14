@@ -75,7 +75,7 @@ void clogs_put(enum clogs_level l, const char* func, const char* format, ...)
 	pthread_mutex_lock(&c.mtx);
 	if(c.count >= CLOGS_QUEUE_MAX) {
 		fprintf(c.streams[CLOGS_ERR],"%s%s (%s) CLOGS_QUEUE_MAX reached!%s\n",
-				c.colors[CLOGS_ERR], c.levels[CLOGS_ERR], __FUNCTION__,
+				c.colors[CLOGS_ERR], c.levels[CLOGS_ERR], __func__,
 				ANSI_COLOR_RESET);
 	} else { 
 		char tmp[CLOGS_MSG_MAX];

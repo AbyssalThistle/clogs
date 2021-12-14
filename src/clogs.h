@@ -19,35 +19,35 @@
 #endif
 
 #define CLOG(format, ...)\
-	clogs_put(CLOGS_INFO, __FUNCTION__, format, ##__VA_ARGS__)
+	clogs_put(CLOGS_INFO, __func__, format, ##__VA_ARGS__)
 #define CLOG_WARN(format, ...)\
-	clogs_put(CLOGS_WARN, __FUNCTION__, format, ##__VA_ARGS__)
+	clogs_put(CLOGS_WARN, __func__, format, ##__VA_ARGS__)
 #ifdef DEBUG
 	#define CLOG_DEBUG(format, ...)\
-		clogs_put(CLOGS_DEBUG, __FUNCTION__, format, ##__VA_ARGS__)
+		clogs_put(CLOGS_DEBUG, __func__, format, ##__VA_ARGS__)
 #else
 	#define CLOG_DEBUG(format, ...)
 #endif
 #define CLOG_ERR(format, ...)\
-	clogs_put(CLOGS_ERR, __FUNCTION__, format, ##__VA_ARGS__)
+	clogs_put(CLOGS_ERR, __func__, format, ##__VA_ARGS__)
 
 #define COUT(format, ...)\
-	clogs_out(CLOGS_INFO, __FUNCTION__, format, ##__VA_ARGS__)
+	clogs_out(CLOGS_INFO, __func__, format, ##__VA_ARGS__)
 #define COUT_WARN(format, ...)\
-	clogs_out(CLOGS_WARN, __FUNCTION__, format, ##__VA_ARGS__)
+	clogs_out(CLOGS_WARN, __func__, format, ##__VA_ARGS__)
 #ifdef DEBUG
 	#define COUT_DEBUG(format, ...)\
-		clogs_out(CLOGS_DEBUG, __FUNCTION__, format, ##__VA_ARGS__)
+		clogs_out(CLOGS_DEBUG, __func__, format, ##__VA_ARGS__)
 #else
 	#define COUT_DEBUG(format, ...)
 #endif
 #define COUT_ERR(format, ...)\
-	clogs_out(CLOGS_ERR, __FUNCTION__, format, ##__VA_ARGS__)
+	clogs_out(CLOGS_ERR, __func__, format, ##__VA_ARGS__)
 
 #define TODO(format, ...)\
-	clogs_out(CLOGS_WARN, __FUNCTION__, "TODO: " format, ##__VA_ARGS__)
+	clogs_out(CLOGS_WARN, __func__, "TODO: " format, ##__VA_ARGS__)
 #define TTODO(format, ...)\
-	clogs_put(CLOGS_WARN, __FUNCTION__, "TODO: " format, ##__VA_ARGS__)
+	clogs_put(CLOGS_WARN, __func__, "TODO: " format, ##__VA_ARGS__)
 
 #include <stdio.h>
 
